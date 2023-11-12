@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SideNavigation from "./layouts/nivigation/SideNavigation";
+import SignIn from "./pages/SignIn";
+import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./pages/Dashboard";
+import User from "./pages/User";
+import Role from "./pages/Role";
+import NotFound from "./pages/NotFound";
+import Permission from "./pages/Permission";
+import { PATH_AUTH, PATH_DASHBOARD } from "./routes/paths";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path={PATH_DASHBOARD.root} element={<MainLayout />}>
+        
+        <Route index element={<Dashboard />} />
+        <Route path={PATH_DASHBOARD.user.list} element={<User />} />
+        <Route path={PATH_DASHBOARD.role.list} element={<Role />} />
+        <Route path={PATH_DASHBOARD.permission.list} element={<Permission />} />
+        <Route path="*" element={<NotFound />} />
+        
+      </Route>
+      <Route path={PATH_AUTH.login} element={<SignIn />}/>
+    </Routes>
+  </BrowserRouter>
   );
-}
+};
 
 export default App;
