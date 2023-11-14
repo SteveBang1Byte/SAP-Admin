@@ -4,10 +4,11 @@ import SignIn from "./pages/SignIn";
 import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import User from "./pages/User";
-import Role from "./pages/Role";
+import RoleDashboard from "./pages/role/RoleDashboard";
 import NotFound from "./pages/NotFound";
 import Permission from "./pages/Permission";
 import { PATH_AUTH, PATH_DASHBOARD } from "./routes/paths";
+import RoleDetail from "./pages/role/RoleDetail";
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
         
         <Route index element={<Dashboard />} />
         <Route path={PATH_DASHBOARD.user.list} element={<User />} />
-        <Route path={PATH_DASHBOARD.role.list} element={<Role />} />
+        <Route path={PATH_DASHBOARD.role.list} element={<RoleDashboard />} />
+        <Route path={PATH_DASHBOARD.role.edit()} element={<RoleDetail />} />
         <Route path={PATH_DASHBOARD.permission.list} element={<Permission />} />
         <Route path="*" element={<NotFound />} />
         

@@ -11,9 +11,8 @@ export const PATH_DASHBOARD = {
     },
 
     role: {
-        list: `${ROOTS_DASHBOARD}/role`,
-        create: `${ROOTS_DASHBOARD}/role/create`,
-        edit: (id = ':id') => `${ROOTS_DASHBOARD}/role/${id}/edit`,
+        list: `${ROOTS_DASHBOARD}/roles`,
+        edit: (id = ':id') => `${ROOTS_DASHBOARD}/roles/${id}`,
     },
 
     permission: {

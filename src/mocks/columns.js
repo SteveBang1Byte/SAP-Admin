@@ -31,3 +31,31 @@ export const ColumnsUser =
         _props : { scope: 'col' }
     },
 ];
+
+export const ColumnsRole = 
+[
+    {
+        key: 'id',
+        displayName: 'ID',
+        className: 'px-3 py-3',
+        _props : { scope: 'col' }
+    },
+    {
+        key: 'name',
+        displayName: 'Name',
+        className: 'px-3 py-3',
+        _props : { scope: 'col' }
+    },
+    {
+        key: 'isSystem',
+        displayName: 'Is System',
+        className: 'px-3 py-3',
+        _props : { scope: 'col' }
+    },
+    {
+        key: 'description',
+        displayName: 'Description',
+        className: 'px-3 py-3',
+        _props : { scope: 'col' }
+    }
+];

@@ -34,8 +34,8 @@ const SignIn = () => {
 
     return (
         <>
-         <div className="flex justify-center items-center my-10">
-         <div className="container w-2/6 px-8 py-12 shadow-xl rounded ">
+         <div className="flex justify-center items-center py-10 h-screen  bg-gradient-to- from-white to-indigo-300 ">
+         <div className="container bg-white w-2/6 px-8 py-12 shadow-xl rounded ">
             <div>
               <p className="text-2xl font-medium mb-3">Sign in to your account</p>
               <InputGroup label='Email' placeholder='example@email.com' valueInput={email}  onChange={(e) => setEmail(e.target.value)} />

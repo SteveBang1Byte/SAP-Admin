@@ -6,8 +6,6 @@ import { UsersRow } from "../mocks/users";
 
 const User = () => {
 
-
-
   return (
     <div>
       <div className="flex justify-between" >

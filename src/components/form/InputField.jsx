@@ -1,4 +1,4 @@
-const InputField = ({value, placeholder, type = 'text', onChange}) => {
+const InputField = ({value, placeholder, type = 'text', onChange, required}) => {
   
     return (
         <>
@@ -8,6 +8,7 @@ const InputField = ({value, placeholder, type = 'text', onChange}) => {
         onChange={onChange}
         placeholder={placeholder}
         value={value}
+        required={required}
       />
       </>
     );
