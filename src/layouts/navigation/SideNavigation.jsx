@@ -18,7 +18,7 @@ const SideNavigation = () => {
   }
 
     return (
-    <div className="py-4 px-2 h-screen w-1/6 min-w-1/6  bg-slate-50">
+    <div className="py-4 px-2 h-screen w-1/6 min-w-1/6  bg-slate-50 ">
   
       <div className="w-full py-4 px-2 text-gray-900  rounded-lg text-left capitalize font-medium ">
       {

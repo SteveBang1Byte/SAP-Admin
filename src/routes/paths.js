@@ -11,7 +11,7 @@ export const PATH_DASHBOARD = {
     },
 
     role: {
-        list: `${ROOTS_DASHBOARD}/roles`,
+        list: `${ROOTS_DASHBOARD}/role`,
         edit: (id = ':id') => `${ROOTS_DASHBOARD}/roles/${id}`,
     },
 
@@ -29,4 +29,9 @@ export const PATH_AUTH = {
     resetPassword: '/auth/reset-password',
     verify: '/auth/verify',
     notFound: '/auth/*',
+}
+
+export const PATH_USER = {
+    create: '/users/create',
+    edit: (id = ':id') => `/user/${id}/edit`,
 }

@@ -1,22 +1,14 @@
-import { BackgroundColor } from "../../constants/ColorConstant";
+
+import { TypeButton } from "../../constants/ColorConstant";
 import Spinner from "../Spinner";
 
-const ButtonField = ({ title, onClick, isLoading, width, backgroundColor, className}) => {
+const ButtonField = ({ title, onClick, isLoading, width, className, type = TypeButton.PRIMARY}) => {
 
-    const setBackgroundColor = () => {
-        if(backgroundColor === undefined){
-            return BackgroundColor.primary + ' text-white';
-        } else {
-            return BackgroundColor.white + ' text-slate-700 border';
-        }
-    }
 
 
     return (
-        <button className={`text-base font-medium 
-         ${width !== undefined ? width: '' } 
-         py-3 px-4 
-        ${setBackgroundColor()}
+        <button className={`text-center ${width !== undefined ? width: '' } 
+        ${type}
         rounded-md 
         disabled:opacity-75 
         ${className}

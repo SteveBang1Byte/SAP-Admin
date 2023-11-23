@@ -3,14 +3,18 @@ import Label from "../components/form/Label";
 import TableField from "../components/table/TableField";
 import { ColumnsUser } from "../mocks/columns";
 import { UsersRow } from "../mocks/users";
+import { useNavigate } from "react-router";
+import { PATH_USER } from "../routes/paths";
 
 const User = () => {
+
+  const navigate = useNavigate();
 
   return (
     <div>
       <div className="flex justify-between" >
       <Label title="Users" size = 'xl' />
-      <ButtonField title="Create User" />
+      <ButtonField title="Create User" onClick={() => navigate(PATH_USER.create)} />
       </div>
 
       {/* <table className="w-full text-sm text-left table-fixed ">
@@ -48,7 +52,7 @@ const User = () => {
         </tbody>
       </table> */}
 
-      <TableField columns={ColumnsUser} rows={UsersRow} />
+      <TableField columns={ColumnsUser} rows={UsersRow} isEditLink={true} />
     </div>
   );
 };

@@ -1,34 +1,43 @@
 import { useEffect, useState } from "react";
 import ButtonField from "../../components/form/ButtonField";
 import Label from "../../components/form/Label";
-import TableField from "../../components/table/TableField";
+import IconDelete from '../../assets/icons/delete.svg'
 import { ColumnsRole } from "../../mocks/columns";
 import roleApi from "../../api/roleApi";
 import ModalCrud from "../../components/ModalCrud";
 import InputGroup from "../../components/form/InputGroup";
+import Spinner, { SpinnerType } from "../../components/Spinner";
+import Table from "../../components/table/Table";
+import Row, { RowStyle } from "../../components/table/Row";
+import { useNavigate } from "react-router-dom";
+import { PATH_DASHBOARD } from "../../routes/paths";
 
 
 const RoleDashboard = () => {
 
+    const navigate = useNavigate();
     const [roles, setRoles] = useState([]);
     const [isDisplayModal, setIsDisplayModal] = useState(false);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
 
 
     useEffect(() => {
+
+        setIsLoading(true);
+
         roleApi.getAll().then((res) => {
-            setRoles(res.data.data);
-            
-            
+            setRoles(res.data.items);
         }
         ).catch((err) => {
             console.log(err);
         });
+
+        setIsLoading(false);
+   
     }, []);
-
-
 
     const onClickButtonCreateRole = () => {
         const role = 
@@ -49,7 +58,35 @@ const RoleDashboard = () => {
 
         }).catch((err) => {
             console.log(err);
-        });
+        });    
+    }
+
+    const displayTableRoles = () => {
+      // If loading data, display spinner.
+      if (isLoading) {
+
+        return <Spinner type={SpinnerType.medium} />
+        
+      }
+
+      return (
+        <Table columns={ColumnsRole}>
+            {
+              roles.map((value, key) => (
+                    <Row key={key} onClick={() => navigate(PATH_DASHBOARD.role.edit(value.id))} >
+                      <td className={RowStyle.className}> {value.id}</td>
+                      <td className={RowStyle.className}> {value.name}</td>
+
+                      <td className={RowStyle.className}> {value.description}</td>
+                      <td className={RowStyle.className}> <img src={IconDelete} className="scale-75 " alt="Delete"/> </td>
+                    </Row>
+               ))
+            }
+
+        </Table>  
+      );
+      
+
     }
 
 
@@ -69,7 +106,8 @@ const RoleDashboard = () => {
       </ModalCrud>
       </div>
 
-      <TableField columns={ColumnsRole} rows={roles} />
+      { displayTableRoles() }
+
     </div>
   );
 };

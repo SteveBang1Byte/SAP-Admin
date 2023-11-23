@@ -1,4 +1,5 @@
 import axiosClient from "./axiosClient";
+const baseUrl = 'api/users';
 
 const userApi = {
 
@@ -12,6 +13,12 @@ const userApi = {
 
     return axiosClient.post(url, payload);
   },
+
+  registration(user) {
+    const url = `${baseUrl}/registration`;
+    return axiosClient.post(url, user);
+  }
+  
 
 };
 

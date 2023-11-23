@@ -1,30 +1,31 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SideNavigation from "./layouts/nivigation/SideNavigation";
 import SignIn from "./pages/SignIn";
 import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import User from "./pages/User";
 import RoleDashboard from "./pages/role/RoleDashboard";
 import NotFound from "./pages/NotFound";
-import Permission from "./pages/Permission";
-import { PATH_AUTH, PATH_DASHBOARD } from "./routes/paths";
+import PermissionDashboard from "./pages/permission/PermissionDashboard";
+import { PATH_AUTH, PATH_DASHBOARD, PATH_USER } from "./routes/paths";
 import RoleDetail from "./pages/role/RoleDetail";
+import UserCreate from "./pages/user/UserCreate";
 
 const App = () => {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path={PATH_DASHBOARD.root} element={<MainLayout />}>
+      <Route path={"/"} element={<MainLayout />}>
         
-        <Route index element={<Dashboard />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path={PATH_DASHBOARD.user.list} element={<User />} />
         <Route path={PATH_DASHBOARD.role.list} element={<RoleDashboard />} />
         <Route path={PATH_DASHBOARD.role.edit()} element={<RoleDetail />} />
-        <Route path={PATH_DASHBOARD.permission.list} element={<Permission />} />
+        <Route path={PATH_DASHBOARD.permission.list} element={<PermissionDashboard />} />
         <Route path="*" element={<NotFound />} />
         
       </Route>
       <Route path={PATH_AUTH.login} element={<SignIn />}/>
+      <Route path={PATH_USER.create} element={<UserCreate />}/>
     </Routes>
   </BrowserRouter>
   );

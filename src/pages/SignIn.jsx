@@ -2,6 +2,7 @@ import { useState } from "react";
 import InputGroup from "../components/form/InputGroup";
 import ButtonField from "../components/form/ButtonField";
 import userApi from "../api/userApi";
+import { TypeButton } from "../constants/ColorConstant";
 
 const SignIn = () => {
 // #region state
@@ -56,7 +57,7 @@ const SignIn = () => {
                 </p>
               </div>
               <div className="my-6">
-              <ButtonField  title='Continue' width={'w-full'} onClick={handleOnClickContinue} isLoading={isLoading}/> 
+              <ButtonField  title='Continue' width={'w-full'} onClick={handleOnClickContinue} isLoading={isLoading} type={TypeButton.LARGE}/> 
               </div>
               
             </div>
